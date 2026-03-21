@@ -1,16 +1,11 @@
 import 'package:flutter/material.dart';
 import '../screens/product_detail_screen.dart';
+import '../models/product.dart';
 
 class ProductCard extends StatelessWidget {
-  final String title;
-  final double price;
-  final String image;
+ final Product product ;
 
-  const ProductCard({
-    required this.title,
-    required this.price,
-    required this.image,
-  });
+  const ProductCard({ required this.product});
 
   @override
   Widget build(BuildContext context) {
@@ -20,11 +15,7 @@ class ProductCard extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (_) => ProductDetailScreen(
-              title: title,
-              price: price,
-              image: image,
-            ),
+            builder: (_) => ProductDetailScreen(product: product),
           ),
         );
       },
@@ -48,7 +39,7 @@ class ProductCard extends StatelessWidget {
             ClipRRect(
               borderRadius: BorderRadius.vertical(top: Radius.circular(15)),
               child: Image.network(
-                image,
+                product.image,
                 height: 120,
                 width: double.infinity,
                 fit: BoxFit.cover,
@@ -59,10 +50,10 @@ class ProductCard extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(title,
+                  Text(product.title,
                       style: TextStyle(fontWeight: FontWeight.bold)),
                   SizedBox(height: 5),
-                  Text("\$${price}",
+                  Text("\$${product.price}",
                       style: TextStyle(color: Colors.green)),
                 ],
               ),
