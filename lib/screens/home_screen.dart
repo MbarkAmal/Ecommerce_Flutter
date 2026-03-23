@@ -9,23 +9,26 @@ class HomeScreen extends StatelessWidget {
       title: "iPhone 13",
       price: 999,
       image: "https://i.pinimg.com/736x/07/95/77/079577cd1e880a27e38cca57b98e604c.jpg",
+      quantity: 1,
     ),
     Product(
-      title: "iPhone 13",
+      title: "Laptop",
       price: 999,
-      image: "https://i.pinimg.com/736x/07/95/77/079577cd1e880a27e38cca57b98e604c.jpg",
+      image: "https://i.pinimg.com/736x/20/4e/90/204e905bfc7f55c45f3a0eeddc2431c9.jpg",
+        quantity: 1,
     ),
     Product(
-      title: "iPhone 13",
+      title: "Headphone",
       price: 999,
-      image: "https://i.pinimg.com/736x/07/95/77/079577cd1e880a27e38cca57b98e604c.jpg",
+      image: "https://i.pinimg.com/736x/57/71/2f/57712f7c1014b09b3a76437adb471a98.jpg",
+      quantity: 1,
     ),
-  ]; // ✅ fixed
+  ]; 
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(title: "Grinato !"),
+      appBar: CustomAppBar(title: "Grinato "),
       body: Padding(
         padding: EdgeInsets.all(10),
         child: GridView.builder(

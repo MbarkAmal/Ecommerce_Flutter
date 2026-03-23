@@ -7,6 +7,8 @@ class ProductCard extends StatelessWidget {
 
   const ProductCard({ required this.product});
 
+  static get totalPrice => null;
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
