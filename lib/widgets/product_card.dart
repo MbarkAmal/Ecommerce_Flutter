@@ -3,11 +3,9 @@ import '../screens/product_detail_screen.dart';
 import '../models/product.dart';
 
 class ProductCard extends StatelessWidget {
- final Product product ;
+  final Product product;
 
-  const ProductCard({ required this.product});
-
-  static get totalPrice => null;
+  const ProductCard({required this.product, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +20,7 @@ class ProductCard extends StatelessWidget {
         );
       },
       child: Container(
-        margin: EdgeInsets.all(10),
+        margin: const EdgeInsets.all(10),
         width: 160,
         decoration: BoxDecoration(
           color: Colors.white,
@@ -31,7 +29,7 @@ class ProductCard extends StatelessWidget {
             BoxShadow(
               color: Colors.grey.shade300,
               blurRadius: 5,
-              offset: Offset(0, 3),
+              offset: const Offset(0, 3),
             ),
           ],
         ),
@@ -39,7 +37,8 @@ class ProductCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             ClipRRect(
-              borderRadius: BorderRadius.vertical(top: Radius.circular(15)),
+              borderRadius:
+                  const BorderRadius.vertical(top: Radius.circular(15)),
               child: Image.network(
                 product.image,
                 height: 120,
@@ -48,15 +47,16 @@ class ProductCard extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: EdgeInsets.all(10),
+              padding: const EdgeInsets.all(10),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(product.title,
-                      style: TextStyle(fontWeight: FontWeight.bold)),
-                  SizedBox(height: 5),
+                  // ✅ FIXED HERE
+                  Text(product.name,
+                      style: const TextStyle(fontWeight: FontWeight.bold)),
+                  const SizedBox(height: 5),
                   Text("\$${product.price}",
-                      style: TextStyle(color: Colors.green)),
+                      style: const TextStyle(color: Colors.green)),
                 ],
               ),
             ),

@@ -51,7 +51,7 @@ class CartScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      ProductCard.title,
+                      ProductCard.name,
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 16,

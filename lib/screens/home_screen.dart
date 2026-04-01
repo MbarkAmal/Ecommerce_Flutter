@@ -2,48 +2,76 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/models/product.dart';
 import '../widgets/product_card.dart';
 import '../widgets/bar.dart';
+import '../services/api_service.dart'; // ✅ import your API
 
-class HomeScreen extends StatelessWidget {
-  final List<Product> products = [
-    Product(
-      title: "iPhone 13",
-      price: 999,
-      image: "https://i.pinimg.com/736x/07/95/77/079577cd1e880a27e38cca57b98e604c.jpg",
-      quantity: 1,
-    ),
-    Product(
-      title: "Laptop",
-      price: 999,
-      image: "https://i.pinimg.com/736x/20/4e/90/204e905bfc7f55c45f3a0eeddc2431c9.jpg",
-        quantity: 1,
-    ),
-    Product(
-      title: "Headphone",
-      price: 999,
-      image: "https://i.pinimg.com/736x/57/71/2f/57712f7c1014b09b3a76437adb471a98.jpg",
-      quantity: 1,
-    ),
-  ]; 
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  late Future<List<Product>> _productsFuture;
+
+  @override
+  void initState() {
+    super.initState();
+    _productsFuture = getProducts();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(title: "Grinato "),
+      appBar: CustomAppBar(title: "Grinato"),
       body: Padding(
-        padding: EdgeInsets.all(10),
-        child: GridView.builder(
-          itemCount: products.length,
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2, // 2 cards per row
-            childAspectRatio: 0.75,
-          ),
-          itemBuilder: (context, index) {
-            return ProductCard(
-              product: products[index],
+        padding: const EdgeInsets.all(10),
+        child: FutureBuilder<List<Product>>(
+          future: _productsFuture,
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return const Center(child: CircularProgressIndicator());
+            } else if (snapshot.hasError) {
+              return Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Icon(Icons.error_outline, color: Colors.red, size: 40),
+                    const SizedBox(height: 10),
+                    Text('Error: ${snapshot.error}'),
+                    const SizedBox(height: 20),
+                    ElevatedButton(
+                      onPressed: () {
+                        setState(() {
+                          _productsFuture = getProducts();
+                        });
+                      },
+                      child: const Text("Retry"),
+                    ),
+                  ],
+                ),
+              );
+            } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
+              return const Center(child: Text('No products found'));
+            }
+
+            final products = snapshot.data!;
+
+            return GridView.builder(
+              itemCount: products.length,
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                childAspectRatio: 0.75,
+              ),
+              itemBuilder: (context, index) {
+                return ProductCard(
+                  product: products[index],
+                );
+              },
             );
           },
         ),
       ),
     );
   }
-}
+}
