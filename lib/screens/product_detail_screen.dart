@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import '../models/product.dart';
 import '../providers/cart_providers.dart';
 import '../screens/cart_screen.dart';
-import '../services/api_service.dart'; // ✅ import your API
+import '../services/api_service.dart'; // import your API
 
 
 class ProductDetailScreen extends StatelessWidget {

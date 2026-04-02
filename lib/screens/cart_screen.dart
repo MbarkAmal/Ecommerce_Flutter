@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/widgets/product_card.dart';
 import 'package:provider/provider.dart';
 import '../providers/cart_providers.dart' ;
-
+import 'checkout_screen.dart';
 class CartScreen extends StatelessWidget {
   @override 
   Widget build(BuildContext context) {
@@ -106,14 +106,45 @@ class CartScreen extends StatelessWidget {
         },
       ),
 
-      bottomNavigationBar: Container(
-        padding: EdgeInsets.all(15),
-        color: Colors.white,
-      child: Text(
-      "Total: \$${cartProvider.totalPrice}",
-      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-    ),
+   bottomNavigationBar: Container(
+  padding: EdgeInsets.all(15),
+  color: Colors.white,
+  child: Column(
+    mainAxisSize: MainAxisSize.min,
+    children: [
+      Text(
+        "Total: \$${cartProvider.totalPrice}",
+        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
       ),
+
+      SizedBox(height: 10),
+
+      SizedBox(
+        width: double.infinity,
+        child: ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.black,
+            padding: EdgeInsets.symmetric(vertical: 15),
+          ),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (_) => CheckoutScreen(),
+              ),
+            );
+          },
+          child: Text  (
+            "Checkout",
+            style: TextStyle(
+              color: Colors.white),
+          ),
+         
+        ),
+      ),
+    ],
+  ),
+),
     );
   }
 }

@@ -4,7 +4,7 @@ import 'package:flutter_app/screens/cart_screen.dart';
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
 
-  CustomAppBar({this.title = "eco"});
+  CustomAppBar({this.title = "Grinato"});
 
   @override
   Widget build(BuildContext context) {
