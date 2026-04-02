@@ -1,11 +1,12 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_app/screens/product_detail_screen.dart';
+import 'package:flutter_app/screens/profile_screen.dart';
 import '../widgets/bottom_nav_bar.dart';
 import 'home_screen.dart';
 import 'cart_screen.dart';
 import 'product_detail_screen.dart';
-//import 'profile_screen.dart';
+import 'profile_screen.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
@@ -21,7 +22,7 @@ class _MainScreenState extends State<MainScreen> {
   final List<Widget> _screens = [
     HomeScreen(),
     CartScreen(),
-    const Center(child: Text("Profile Screen - Coming Soon!")), // Placeholder
+    ProfileScreen(),
   ];
 
   @override

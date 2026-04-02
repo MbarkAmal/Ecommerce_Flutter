@@ -5,28 +5,28 @@
       "name": "iPhone 14",
       "price": 1200,
       "description": "Apple smartphone with A15 Bionic chip and advanced camera system",
-      "image": "https://via.placeholder.com/150"
+      "image": "https://i.pinimg.com/736x/26/be/56/26be56634ad9773c9d8f6315cac2cba7.jpg"
     },
     {
       "id": 2,
       "name": "Samsung Galaxy S23",
       "price": 1000,
       "description": "High-end Android phone with powerful performance and sleek design",
-      "image": "https://via.placeholder.com/150"
+      "image": "https://i.pinimg.com/736x/03/c2/70/03c2702c4ad9b7a0bd6e854af6d32674.jpg"
     },
     {
       "id": 3,
       "name": "MacBook Pro",
       "price": 2200,
       "description": "Powerful laptop for developers and designers with M2 chip",
-      "image": "https://via.placeholder.com/150"
+      "image": "https://i.pinimg.com/736x/03/c2/70/03c2702c4ad9b7a0bd6e854af6d32674.jpg"
     },
     {
       "id": 4,
       "name": "Headphones",
       "price": 150,
       "description": "Noise-cancelling wireless headphones with long battery life",
-      "image": "https://via.placeholder.com/150"
+      "image": "https://i.pinimg.com/736x/03/c2/70/03c2702c4ad9b7a0bd6e854af6d32674.jpg"
     }
   ]
 }

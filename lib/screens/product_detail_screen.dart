@@ -43,7 +43,7 @@ class ProductDetailScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
 
-                  /// 🏷 TITLE
+                  ///  TITLE
                   Text(
                     product.name,
                     style: const TextStyle(
@@ -53,8 +53,17 @@ class ProductDetailScreen extends StatelessWidget {
                   ),
 
                   const SizedBox(height: 10),
+                  /// description
+                  Text(
+                    product.description,
+                    style: const TextStyle(
+                      fontSize: 12 ,
+                      fontWeight: FontWeight.w400,
+                    ),
 
-                  /// 💰 PRICE
+                  ),
+                  const SizedBox(height: 10), 
+                  ///  PRICE
                   Text(
                     "\$${product.price}",
                     style: const TextStyle(
