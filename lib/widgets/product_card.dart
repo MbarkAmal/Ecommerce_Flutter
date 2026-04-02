@@ -11,7 +11,7 @@ class ProductCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        // 🚀 NAVIGATION
+        // NAVIGATION
         Navigator.push(
           context,
           MaterialPageRoute(
@@ -51,7 +51,6 @@ class ProductCard extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // ✅ FIXED HERE
                   Text(product.name,
                       style: const TextStyle(fontWeight: FontWeight.bold)),
                   const SizedBox(height: 5),

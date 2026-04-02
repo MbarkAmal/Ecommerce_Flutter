@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/models/product.dart';
 import '../widgets/product_card.dart';
 import '../widgets/bar.dart';
-import '../services/api_service.dart'; // ✅ import your API
+import '../services/api_service.dart'; 
+import '../widgets/search_bar_widget.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -11,22 +12,24 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
-  late Future<List<Product>> _productsFuture;
+class _HomeScreenState extends State<HomeScreen> { // data is stored here and can be chnaged by setState 
+  late Future<List<Product>> _productsFuture; // fetching data from aoi call or json file and store it in this variable 
 
   @override
   void initState() {
     super.initState();
     _productsFuture = getProducts();
   }
+  String searchQuery = "";
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(title: "Grinato"),
+      appBar: CustomAppBar(),
       body: Padding(
         padding: const EdgeInsets.all(10),
-        child: FutureBuilder<List<Product>>(
+        child: 
+        FutureBuilder<List<Product>>(
           future: _productsFuture,
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
@@ -56,22 +59,40 @@ class _HomeScreenState extends State<HomeScreen> {
             }
 
             final products = snapshot.data!;
+            final filteredProducts = products.where((product) {
+               return product.name.toLowerCase().contains(searchQuery);
+              }).toList();
 
-            return GridView.builder(
-              itemCount: products.length,
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                childAspectRatio: 0.75,
-              ),
-              itemBuilder: (context, index) {
-                return ProductCard(
-                  product: products[index],
-                );
-              },
-            );
+           return Column(
+            children: [
+              SearchBarWidget(
+                onChanged: (value) {
+                  setState(() {
+                    searchQuery = value.toLowerCase();
+                     });
+                      },
+                      ),
+
+    //  Products Grid
+    Expanded(
+      child: GridView.builder(
+        itemCount: products.length,
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          childAspectRatio: 0.75,
+        ),
+        itemBuilder: (context, index) {
+          return ProductCard(
+            product: filteredProducts[index],
+          );
+        },
+      ),
+    ),
+  ],
+);
           },
         ),
       ),
     );
   }
-}
+}
