@@ -78,6 +78,10 @@ class ProductDetailScreen extends StatelessWidget {
                   SizedBox(
                     width: double.infinity,
                     child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.black,
+            padding: EdgeInsets.symmetric(vertical: 15),
+          ),
                       onPressed: () {
                         // Add product to cart
                         context.read<CartProviders>().add(product);
@@ -90,7 +94,11 @@ class ProductDetailScreen extends StatelessWidget {
                           ),
                         );
                       },
-                      child: const Text("Add to Cart"),
+                      child: const Text(
+                        "Add to Cart" ,
+                        style: TextStyle(
+              color: Colors.white),
+              ),
                     ),
                   ),
                 ],

@@ -6,7 +6,7 @@ import 'package:flutter/foundation.dart'; // for kIsWeb : detect if the app run 
 //  FOR WEB: use "localhost"
 //  FOR ANDROID EMULATOR: use "10.0.2.2"
 //  FOR PHYSICAL PHONE: use your PC's IP address (e.g., "192.168.1.10")
-const String baseUrl = kIsWeb ? "http://localhost:3000" : "http://192.168.224.101:3000";
+const String baseUrl = kIsWeb ? "http://localhost:3000" : "https://ivy-rhinencephalous-rosamaria.ngrok-free.dev";
 
 Future<List<Product>> getProducts() async { // async func that return a list of products (takes time )
   try {

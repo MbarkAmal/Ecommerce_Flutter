@@ -29,7 +29,7 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
 
-      /// 📱 change screen here
+      ///  change screen here
       body: IndexedStack(
         index: _selectedIndex,
         children: _screens,
